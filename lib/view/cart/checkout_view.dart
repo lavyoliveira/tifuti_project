@@ -22,7 +22,7 @@ class CheckoutView extends StatelessWidget {
           SizedBox(
             height: 130.h,
             child: Padding(
-              padding: EdgeInsets.only(bottom: 24.h, left: 16.w, right: 16.w),
+              padding: const EdgeInsets.only(bottom: 24, left: 16, right: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -53,7 +53,7 @@ class CheckoutView extends StatelessWidget {
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.only(right: 16.w, left: 16.w, bottom: 24.h),
+                padding: const EdgeInsets.only(right: 16, left: 16, bottom: 24),
                 child: Form(
                   key: _formKey,
                   child: GetBuilder<CheckoutViewModel>(
@@ -110,15 +110,15 @@ class CheckoutView extends StatelessWidget {
                                 },
                               ),
                             ),
-                            SizedBox(
-                              width: 36.w,
+                            const SizedBox(
+                              width: 36,
                             ),
                             Expanded(
                               child: CustomTextFormField(
-                                hintText: 'Egypt',
+                                hintText: 'Brasil',
                                 validatorFn: (value) {
                                   if (value!.isEmpty || value.length < 4) {
-                                    return 'Please enter valid cidade name.';
+                                    return 'Por favor, insira um nome válido de país.';
                                   }
                                   return null;
                                 },
@@ -218,7 +218,7 @@ class ListViewProducts extends StatelessWidget {
               itemCount: controller.cartProducts.length,
               itemBuilder: (context, index) {
                 return SizedBox(
-                  width: 120.w,
+                  width: 120,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -228,8 +228,8 @@ class ListViewProducts extends StatelessWidget {
                           borderRadius: BorderRadius.circular(4.r),
                           color: Colors.white,
                         ),
-                        height: 120.h,
-                        width: 120.w,
+                        height: 120,
+                        width: 120,
                         child: Image.network(
                           controller.cartProducts[index].image,
                           fit: BoxFit.cover,
@@ -251,8 +251,8 @@ class ListViewProducts extends StatelessWidget {
                 );
               },
               separatorBuilder: (context, index) {
-                return SizedBox(
-                  width: 15.w,
+                return const SizedBox(
+                  width: 15,
                 );
               },
             ),

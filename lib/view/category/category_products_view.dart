@@ -21,9 +21,9 @@ class CategoryProductsView extends StatelessWidget {
       body: Column(
         children: [
           SizedBox(
-            height: 130.h,
+            height: 130,
             child: Padding(
-              padding: EdgeInsets.only(bottom: 24.h, left: 16.w, right: 16.w),
+              padding: const EdgeInsets.only(bottom: 24, left: 16, right: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -53,7 +53,7 @@ class CategoryProductsView extends StatelessWidget {
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.only(right: 16.w, left: 16.w, bottom: 24.h),
+              padding: const EdgeInsets.only(right: 16, left: 16, bottom: 24),
               child: GridView.builder(
                 padding: const EdgeInsets.all(0),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -71,7 +71,7 @@ class CategoryProductsView extends StatelessWidget {
                       );
                     },
                     child: SizedBox(
-                      width: 164.w,
+                      width: 164,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,8 +81,8 @@ class CategoryProductsView extends StatelessWidget {
                               borderRadius: BorderRadius.circular(4.r),
                               color: Colors.white,
                             ),
-                            height: 240.h,
-                            width: 164.w,
+                            height: 240,
+                            width: 164,
                             child: Image.network(
                               products[index].image,
                               fit: BoxFit.cover,

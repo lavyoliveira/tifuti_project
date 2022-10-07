@@ -133,11 +133,9 @@ class ListViewCategories extends StatelessWidget {
                       ),
                       height: 60.h,
                       width: 60.w,
-                      child: Padding(
-                        padding: EdgeInsets.all(14.h),
-                        child: Image.network(
-                          controller.categories[index].image,
-                        ),
+                      child: Image.network(
+                        controller.categories[index].image,
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),

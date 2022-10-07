@@ -24,7 +24,7 @@ class CartView extends StatelessWidget {
                   Expanded(
                     child: Padding(
                       padding:
-                          EdgeInsets.only(top: 74.h, right: 16.w, left: 16.w),
+                          const EdgeInsets.only(top: 74, right: 16, left: 16),
                       child: ListView.separated(
                         padding: EdgeInsets.zero,
                         itemBuilder: (context, index) {
@@ -33,7 +33,7 @@ class CartView extends StatelessWidget {
                             background: Container(
                               color: Colors.red,
                               alignment: Alignment.centerRight,
-                              padding: EdgeInsets.only(right: 33.w),
+                              padding: const EdgeInsets.only(right: 33),
                               child: const Icon(
                                 Icons.delete_forever,
                                 color: Colors.white,
@@ -50,12 +50,12 @@ class CartView extends StatelessWidget {
                               children: [
                                 Image.network(
                                   controller.cartProducts[index].image,
-                                  height: 120.h,
-                                  width: 120.h,
+                                  height: 120,
+                                  width: 120,
                                   fit: BoxFit.cover,
                                 ),
-                                SizedBox(
-                                  width: 30.w,
+                                const SizedBox(
+                                  width: 30,
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,20 +70,20 @@ class CartView extends StatelessWidget {
                                       fontSize: 16,
                                       color: primaryColor,
                                     ),
-                                    SizedBox(
-                                      height: 16.h,
+                                    const SizedBox(
+                                      height: 16,
                                     ),
                                     Container(
-                                      height: 30.h,
-                                      width: 95.h,
+                                      height: 30,
+                                      width: 95,
                                       decoration: BoxDecoration(
                                         borderRadius:
                                             BorderRadius.circular(4.r),
                                         color: Colors.grey.shade300,
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 10.w),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 10),
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
@@ -125,8 +125,8 @@ class CartView extends StatelessWidget {
                             ),
                           );
                         },
-                        separatorBuilder: (context, index) => SizedBox(
-                          height: 16.h,
+                        separatorBuilder: (context, index) => const SizedBox(
+                          height: 16,
                         ),
                         itemCount: controller.cartProducts.length,
                       ),
@@ -135,9 +135,9 @@ class CartView extends StatelessWidget {
                   Material(
                     elevation: 12,
                     child: Container(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 30.w, vertical: 17.h),
-                      height: 84.h,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 17),
+                      height: 84,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -159,8 +159,8 @@ class CartView extends StatelessWidget {
                             ],
                           ),
                           SizedBox(
-                            height: 50.h,
-                            width: 146.w,
+                            height: 50,
+                            width: 146,
                             child: CustomButton(
                               'Checkout',
                               () {

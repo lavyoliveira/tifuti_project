@@ -27,7 +27,7 @@ class ProductDetailView extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     children: [
                       SizedBox(
-                        height: 196.h,
+                        height: 196,
                         width: double.infinity,
                         child: Image.network(
                           _productModel.image,
@@ -47,7 +47,7 @@ class ProductDetailView extends StatelessWidget {
                   ),
                   Padding(
                     padding:
-                        EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                     child: Column(
                       children: [
                         CustomText(
@@ -55,19 +55,19 @@ class ProductDetailView extends StatelessWidget {
                           fontSize: 26,
                           fontWeight: FontWeight.bold,
                         ),
-                        SizedBox(
-                          height: 25.h,
+                        const SizedBox(
+                          height: 25,
                         ),
-                        SizedBox(
-                          height: 33.h,
+                        const SizedBox(
+                          height: 33,
                         ),
                         const CustomText(
                           text: 'Detalhes',
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
-                        SizedBox(
-                          height: 15.h,
+                        const SizedBox(
+                          height: 15,
                         ),
                         CustomText(
                           text: _productModel.description,
@@ -85,7 +85,7 @@ class ProductDetailView extends StatelessWidget {
             elevation: 12,
             color: Colors.white,
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 17.h, horizontal: 30.w),
+              padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -107,7 +107,7 @@ class ProductDetailView extends StatelessWidget {
                   ),
                   GetBuilder<CartViewModel>(
                     builder: (controller) => SizedBox(
-                      width: 146.w,
+                      width: 146,
                       child: CustomButton('Carrinho', () {
                         controller.addProduct(
                           CartModel(
@@ -143,14 +143,14 @@ class RoundedShapeInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40.h,
-      width: 160.w,
+      height: 40,
+      width: 160,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey.shade400),
         borderRadius: BorderRadius.circular(25.r),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

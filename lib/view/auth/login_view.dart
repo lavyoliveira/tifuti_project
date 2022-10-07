@@ -42,7 +42,7 @@ class LoginView extends GetWidget<AuthViewModel> {
                             const SizedBox(
                               height: 81,
                             ),
-                            Container(
+                            SizedBox(
                               child: Image.asset('assets/images/group.png'),
                               width: 266,
                             ),

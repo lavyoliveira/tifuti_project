@@ -39,9 +39,9 @@ class SearchViewState extends State<SearchView> {
       body: Column(
         children: [
           SizedBox(
-            height: 130.h,
+            height: 130,
             child: Padding(
-              padding: EdgeInsets.only(bottom: 24.h, left: 16.w, right: 16.w),
+              padding: const EdgeInsets.only(bottom: 24, left: 16, right: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -70,9 +70,9 @@ class SearchViewState extends State<SearchView> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Container(
-              height: 49.h,
+              height: 49,
               decoration: BoxDecoration(
                 color: Colors.grey.shade200,
                 borderRadius: BorderRadius.circular(45.r),
@@ -94,12 +94,12 @@ class SearchViewState extends State<SearchView> {
               ),
             ),
           ),
-          SizedBox(
-            height: 24.h,
+          const SizedBox(
+            height: 24,
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.only(right: 16.w, left: 16.w, bottom: 24.h),
+              padding: const EdgeInsets.only(right: 16, left: 16, bottom: 24),
               child: GetBuilder<HomeViewModel>(
                 init: Get.find<HomeViewModel>(),
                 builder: (controller) => GridView.builder(
@@ -119,7 +119,7 @@ class SearchViewState extends State<SearchView> {
                         );
                       },
                       child: SizedBox(
-                        width: 164.w,
+                        width: 164,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -129,8 +129,8 @@ class SearchViewState extends State<SearchView> {
                                 borderRadius: BorderRadius.circular(4.r),
                                 color: Colors.white,
                               ),
-                              height: 240.h,
-                              width: 164.w,
+                              height: 240,
+                              width: 164,
                               child: Image.network(
                                 searchProducts[index].image,
                                 fit: BoxFit.cover,
