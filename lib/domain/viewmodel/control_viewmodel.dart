@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../view/profile_view.dart';
-import '../../view/cart_view.dart';
-import '../../view/home_view.dart';
+import '../../view/profile/profile_view.dart';
+import '../../view/cart/cart_view.dart';
+import '../../view/home/home_view.dart';
 
 class ControlViewModel extends GetxController {
   Widget _currentScreen = const HomeView();

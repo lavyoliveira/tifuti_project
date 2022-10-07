@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../core/viewmodel/auth_viewmodel.dart';
-import '../../core/viewmodel/profile_viewmodel.dart';
-import 'profile/edit_profile_view.dart';
-import 'profile/order_history_view.dart';
-import 'widgets/custom_text.dart';
+import '../../../domain/viewmodel/auth_viewmodel.dart';
+import '../../../domain/viewmodel/profile_viewmodel.dart';
+import 'edit_profile_view.dart';
+import 'order_history_view.dart';
+import '../widgets/custom_text.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({Key? key}) : super(key: key);

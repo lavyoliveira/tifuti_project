@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../constants.dart';
-import '../../core/viewmodel/checkout_viewmodel.dart';
+import '../../config/theme.dart';
+import '../../domain/viewmodel/checkout_viewmodel.dart';
 import '../widgets/custom_text.dart';
 
 class OrderHistoryView extends StatelessWidget {

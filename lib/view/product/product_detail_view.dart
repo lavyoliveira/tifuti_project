@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../core/viewmodel/cart_viewmodel.dart';
-import '../model/cart_model.dart';
-import '../model/product_model.dart';
-import 'widgets/custom_button.dart';
-import 'widgets/custom_text.dart';
-import '../../constants.dart';
+import '../../domain/viewmodel/cart_viewmodel.dart';
+import '../../model/cart_model.dart';
+import '../../model/product_model.dart';
+import '../widgets/custom_button.dart';
+import '../widgets/custom_text.dart';
+import '../../config/theme.dart';
 
 class ProductDetailView extends StatelessWidget {
   final ProductModel _productModel;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../core/viewmodel/selectImage_viewmodel.dart';
-import '../../core/viewmodel/profile_viewmodel.dart';
+import '../../domain/viewmodel/selectImage_viewmodel.dart';
+import '../../domain/viewmodel/profile_viewmodel.dart';
 import '../widgets/custom_text.dart';
 import '../widgets/custom_textFormField.dart';
 import '../widgets/custom_button.dart';

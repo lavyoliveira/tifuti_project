@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../core/viewmodel/cart_viewmodel.dart';
-import '../core/viewmodel/checkout_viewmodel.dart';
-import 'widgets/custom_button.dart';
-import '../constants.dart';
-import 'widgets/custom_text.dart';
-import 'widgets/custom_textFormField.dart';
+import '../../domain/viewmodel/cart_viewmodel.dart';
+import '../../domain/viewmodel/checkout_viewmodel.dart';
+import '../widgets/custom_button.dart';
+import '../../config/theme.dart';
+import '../widgets/custom_text.dart';
+import '../widgets/custom_textFormField.dart';
 
 class CheckoutView extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();

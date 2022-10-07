@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../core/viewmodel/auth_viewmodel.dart';
-import '../../constants.dart';
+import '../../domain/viewmodel/auth_viewmodel.dart';
+import '../../config/theme.dart';
 import '../widgets/custom_text.dart';
 import '../widgets/custom_textFormField.dart';
 import '../widgets/custom_button.dart';

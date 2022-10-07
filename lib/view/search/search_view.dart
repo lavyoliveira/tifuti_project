@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../core/viewmodel/home_viewmodel.dart';
-import '../model/product_model.dart';
-import 'product_detail_view.dart';
-import 'widgets/custom_text.dart';
-import '../constants.dart';
+import '../../domain/viewmodel/home_viewmodel.dart';
+import '../../model/product_model.dart';
+import '../product/product_detail_view.dart';
+import '../widgets/custom_text.dart';
+import '../../config/theme.dart';
 
 class SearchView extends StatefulWidget {
   final String? searchValue;

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../core/viewmodel/cart_viewmodel.dart';
+import '../../domain/viewmodel/cart_viewmodel.dart';
 import 'checkout_view.dart';
-import '../../constants.dart';
-import 'widgets/custom_text.dart';
-import 'widgets/custom_button.dart';
+import '../../config/theme.dart';
+import '../widgets/custom_text.dart';
+import '../widgets/custom_button.dart';
 
 class CartView extends StatelessWidget {
   const CartView({Key? key}) : super(key: key);

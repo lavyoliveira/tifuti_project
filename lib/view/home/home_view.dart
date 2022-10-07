@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../core/viewmodel/checkout_viewmodel.dart';
-import '../core/viewmodel/home_viewmodel.dart';
-import 'category_products_view.dart';
-import 'product_detail_view.dart';
-import 'search_view.dart';
-import 'widgets/custom_text.dart';
-import '../../constants.dart';
+import '../../domain/viewmodel/checkout_viewmodel.dart';
+import '../../domain/viewmodel/home_viewmodel.dart';
+import '../category/category_products_view.dart';
+import '../product/product_detail_view.dart';
+import '../search/search_view.dart';
+import '../widgets/custom_text.dart';
+import '../../config/theme.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);

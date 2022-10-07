@@ -4,8 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import 'helper/binding.dart';
-import 'view/control_view.dart';
+import 'config/binding.dart';
+import 'config/control_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

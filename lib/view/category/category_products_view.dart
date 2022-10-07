@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../model/product_model.dart';
-import 'product_detail_view.dart';
-import 'widgets/custom_text.dart';
-import '../constants.dart';
+import '../../model/product_model.dart';
+import '../product/product_detail_view.dart';
+import '../widgets/custom_text.dart';
+import '../../config/theme.dart';
 
 class CategoryProductsView extends StatelessWidget {
   final String categoryName;

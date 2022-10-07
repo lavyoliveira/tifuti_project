@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../constants.dart';
-import '../core/viewmodel/auth_viewmodel.dart';
-import '../core/viewmodel/control_viewmodel.dart';
-import '../core/network_viewmodel.dart';
-import 'auth/login_view.dart';
-import 'widgets/custom_text.dart';
+import 'theme.dart';
+import '../domain/viewmodel/auth_viewmodel.dart';
+import '../domain/viewmodel/control_viewmodel.dart';
+import '../domain/network_viewmodel.dart';
+import '../view/auth/login_view.dart';
+import '../view/widgets/custom_text.dart';
 
 class ControlView extends StatelessWidget {
   const ControlView({Key? key}) : super(key: key);

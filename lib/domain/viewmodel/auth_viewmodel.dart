@@ -7,7 +7,7 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import '../services/local_storage_user.dart';
 import '../services/firestore_user.dart';
 import '../../model/user_model.dart';
-import '../../view/control_view.dart';
+import '../../config/control_view.dart';
 
 class AuthViewModel extends GetxController {
   String? email, password, name;
