@@ -31,7 +31,7 @@ class CustomTextFormField extends StatelessWidget {
             hintText: hintText,
             hintStyle: const TextStyle(
               color: lightGreenDiffColor,
-              fontSize: 18,
+              fontSize: 13,
             ),
             icon: Icon(icon, size: 20, color: Colors.white),
           ),

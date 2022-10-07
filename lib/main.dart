@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         builder: (BuildContext context, child) => GetMaterialApp(
           initialBinding: Binding(),
           theme: ThemeData(
-            fontFamily: 'Montserrat',
+            fontFamily: 'Roboto',
           ),
           home: const ControlView(),
           debugShowCheckedModeBanner: false,
