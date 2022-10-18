@@ -93,12 +93,6 @@ class CategoryProductsView extends StatelessWidget {
                             fontSize: 16,
                           ),
                           CustomText(
-                            text: products[index].description,
-                            fontSize: 12,
-                            color: Colors.grey,
-                            maxLines: 1,
-                          ),
-                          CustomText(
                             text: '\$${products[index].price}',
                             fontSize: 16,
                             color: primaryColor,

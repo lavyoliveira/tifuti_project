@@ -29,9 +29,9 @@ class MyApp extends StatelessWidget {
         builder: (BuildContext context, child) => GetMaterialApp(
           initialBinding: Binding(),
           theme: ThemeData(
-            fontFamily: 'Roboto',
+            fontFamily: 'Montserrat',
           ),
-          home: const ControlView(),
+                   home: const ControlView(),
           debugShowCheckedModeBanner: false,
           title: 'Tifuti',
         ),

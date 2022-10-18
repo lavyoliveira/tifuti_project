@@ -141,12 +141,6 @@ class SearchViewState extends State<SearchView> {
                               fontSize: 16,
                             ),
                             CustomText(
-                              text: searchProducts[index].description,
-                              fontSize: 12,
-                              color: Colors.grey,
-                              maxLines: 1,
-                            ),
-                            CustomText(
                               text: '\$${searchProducts[index].price}',
                               fontSize: 16,
                               color: primaryColor,

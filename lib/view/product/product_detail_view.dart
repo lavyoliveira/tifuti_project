@@ -69,11 +69,6 @@ class ProductDetailView extends StatelessWidget {
                         const SizedBox(
                           height: 15,
                         ),
-                        CustomText(
-                          text: _productModel.description,
-                          fontSize: 14,
-                          height: 2,
-                        ),
                       ],
                     ),
                   ),
