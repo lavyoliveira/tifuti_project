@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../domain/viewmodel/checkout_viewmodel.dart';
 import '../../domain/viewmodel/home_viewmodel.dart';
+import '../../model/product_model.dart';
 import '../category/category_products_view.dart';
 import '../product/product_detail_view.dart';
 import '../search/search_view.dart';
@@ -25,49 +26,50 @@ class HomeView extends StatelessWidget {
                 child: CircularProgressIndicator(),
               )
             : SingleChildScrollView(
-                padding: EdgeInsets.only(
-                    top: 65.h, bottom: 14.h, right: 16.w, left: 16.w),
+                padding:
+                    EdgeInsets.only(top: 65, bottom: 14, right: 16, left: 16),
                 child: Column(
                   children: [
-                    Container(
-                      height: 49.h,
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade200,
-                        borderRadius: BorderRadius.circular(45.r),
+                    ListTile(
+                      leading: const Icon(
+                        Icons.search,
+                        color: primaryColor,
+                        size: 30,
                       ),
-                      child: TextFormField(
+                      title: TextFormField(
                         decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          prefixIcon: Icon(
-                            Icons.search,
-                            color: Colors.black,
+                          hintText: 'buscar',
+                          hintStyle: TextStyle(
+                            color: primaryColor,
+                            fontSize: 20,
                           ),
+                          border: InputBorder.none,
                         ),
                         onFieldSubmitted: (value) {
                           Get.to(() => SearchView(value));
                         },
                       ),
                     ),
-                    SizedBox(
-                      height: 44.h,
+                    const SizedBox(
+                      height: 44,
                     ),
                     const CustomText(
-                      text: 'Categorias',
+                      text: 'categorias',
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
-                    SizedBox(
-                      height: 19.h,
+                    const SizedBox(
+                      height: 19,
                     ),
                     const ListViewCategories(),
-                    SizedBox(
-                      height: 50.h,
+                    const SizedBox(
+                      height: 50,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const CustomText(
-                          text: 'Produtos',
+                          text: 'produtos',
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
@@ -78,17 +80,21 @@ class HomeView extends StatelessWidget {
                                   products: controller.products,
                                 ));
                           },
-                          child: const CustomText(
-                            text: 'Ver todos',
-                            fontSize: 16,
+                          child: const Text(
+                            'ver todos',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: warningColor,
+                              decoration: TextDecoration.underline,
+                            ),
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: 30.h,
+                    const SizedBox(
+                      height: 40,
                     ),
-                    const ListViewProducts(),
+                    ListViewProducts(),
                   ],
                 ),
               ),
@@ -104,7 +110,7 @@ class ListViewCategories extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeViewModel>(
       builder: (controller) => SizedBox(
-        height: 90.h,
+        height: 90,
         child: ListView.separated(
           scrollDirection: Axis.horizontal,
           itemCount: controller.categories.length,
@@ -124,18 +130,24 @@ class ListViewCategories extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Material(
-                    elevation: 1,
-                    borderRadius: BorderRadius.circular(50.r),
+                    // elevation: 1,
+                    borderRadius: BorderRadius.circular(50),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50.r),
                         color: Colors.white,
+                        border: Border.all(
+                          color: backgroundColor,
+                          width: 1,
+                        ),
                       ),
-                      height: 60.h,
-                      width: 60.w,
+                      height: 70,
+                      width: 70,
                       child: Image.network(
                         controller.categories[index].image,
-                        fit: BoxFit.cover,
+                        height: double.infinity,
+                        width: double.infinity,
+                        alignment: Alignment.center,
                       ),
                     ),
                   ),
@@ -148,8 +160,8 @@ class ListViewCategories extends StatelessWidget {
             );
           },
           separatorBuilder: (context, index) {
-            return SizedBox(
-              width: 20.w,
+            return const SizedBox(
+              width: 40,
             );
           },
         ),
@@ -166,8 +178,13 @@ class ListViewProducts extends StatelessWidget {
     return GetBuilder<HomeViewModel>(
       builder: (controller) => SizedBox(
         height: 320.h,
-        child: ListView.separated(
-          scrollDirection: Axis.horizontal,
+        child: GridView.builder(
+          padding: const EdgeInsets.all(0),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 16,
+            crossAxisSpacing: 15,
+          ),
           itemCount: controller.products.length,
           itemBuilder: (context, index) {
             return GestureDetector(
@@ -176,41 +193,65 @@ class ListViewProducts extends StatelessWidget {
                   () => ProductDetailView(controller.products[index]),
                 );
               },
-              child: SizedBox(
-                width: 164.w,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4.r),
-                        color: Colors.white,
+              child: Stack(
+                alignment: Alignment.topCenter,
+                children: <Widget>[
+                  ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                    child: Container(
+                      padding: EdgeInsets.only(top: 50),
+                      child: Container(color: primaryColor),
+                    ),
+                  ),
+                  ClipRRect(
+                    // borderRadius: new BorderRadius.circular(40.0),
+                    child: Image.network(controller.products[index].image,
+                        height: 120, width: 100),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      padding: const EdgeInsets.only(top: 50, left: 10),
+                      child: Text(
+                        controller.products[index].name,
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
                       ),
-                      height: 240.h,
-                      width: 164.w,
-                      child: Image.network(
-                        controller.products[index].image,
-                        fit: BoxFit.cover,
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Container(
+                      padding: const EdgeInsets.only(bottom: 10, left: 10),
+                      child: const Text(
+                        'preço',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                    CustomText(
-                      text: controller.products[index].name,
-                      fontSize: 16,
+                  ),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: Container(
+                      padding: const EdgeInsets.only(
+                        bottom: 10,
+                        right: 10,
+                      ),
+                      child: Text(
+                        '\$${controller.products[index].price}',
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
-                    CustomText(
-                      text: '\$${controller.products[index].price}',
-                      fontSize: 16,
-                      color: primaryColor,
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            );
-          },
-          separatorBuilder: (context, index) {
-            return SizedBox(
-              width: 15.w,
             );
           },
         ),
