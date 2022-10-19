@@ -7,3 +7,4 @@ const darkGreenColor = Color(0xff192D1D);
 const darkGreenDiffColor = Color(0xff37513D);
 const lightOrangeColor = Color(0xffFFC15F);
 const lightGreenDiffColor = Color(0xffB9F1B3);
+const warningColor = Color(0xffCC0000);
