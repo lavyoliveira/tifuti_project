@@ -25,18 +25,15 @@ class HomeView extends StatelessWidget {
     Get.put(HomeViewModel());
 
     return Scaffold(
-      body: GetBuilder<HomeViewModel>(
-        init: Get.find<HomeViewModel>(),
-        builder: (controller) => controller.loading
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
-            : ListView.separated(
-                itemCount: controller.products.length,
-                itemBuilder: (context, index) {
-                  return SingleChildScrollView(
+        body: GetBuilder<HomeViewModel>(
+            init: Get.find<HomeViewModel>(),
+            builder: (controller) => controller.loading
+                ? const Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : SingleChildScrollView(
                     padding: const EdgeInsets.only(
-                        top: 30, bottom: 30, right: 16, left: 16),
+                        top: 30, bottom: 10, right: 16, left: 16),
                     child: Column(
                       children: [
                         ListTile(
@@ -101,21 +98,12 @@ class HomeView extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(
-                          height: 40,
+                          height: 20,
                         ),
                         ListViewProducts(),
                       ],
                     ),
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return const SizedBox(
-                    width: 40,
-                  );
-                },
-              ),
-      ),
-    );
+                  )));
   }
 }
 
@@ -195,7 +183,7 @@ class ListViewProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeViewModel>(
       builder: (controller) => SizedBox(
-        height: 320.h,
+        height: 400,
         child: GridView.builder(
           // padding: const EdgeInsets.only(bottom: 100),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -203,7 +191,7 @@ class ListViewProducts extends StatelessWidget {
             mainAxisSpacing: 16,
             crossAxisSpacing: 15,
           ),
-          itemCount: controller.products.length,
+          itemCount: 4,
           itemBuilder: (context, index) {
             return GestureDetector(
               child: Stack(
