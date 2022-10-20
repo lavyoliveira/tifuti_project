@@ -50,12 +50,14 @@ class CartView extends StatelessWidget {
                               }
                             },
                             child: Container(
+                              margin:
+                                  const EdgeInsets.only(left: 20, right: 10),
                               child: Row(
                                 children: [
                                   Image.network(
                                     controller.cartProducts[index].image,
-                                    height: 120,
-                                    width: 120,
+                                    height: 100,
+                                    width: 100,
                                     fit: BoxFit.cover,
                                   ),
                                   const SizedBox(
@@ -74,7 +76,7 @@ class CartView extends StatelessWidget {
                                         height: 16,
                                       ),
                                       Container(
-                                        height: 30,
+                                        height: 20,
                                         width: 95,
                                         child: Padding(
                                           padding: const EdgeInsets.symmetric(
@@ -111,21 +113,21 @@ class CartView extends StatelessWidget {
                                                       .decreaseQuantity(index);
                                                 },
                                               ),
-                                              Align(
-                                                alignment:
-                                                    Alignment.bottomRight,
-                                                child: CustomText(
-                                                  text:
-                                                      '\$${controller.cartProducts[index].price}',
-                                                  fontSize: 16,
-                                                  color: primaryColor,
-                                                ),
-                                              ),
                                             ],
                                           ),
                                         ),
                                       ),
                                     ],
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 60, left: 70),
+                                    child: Container(
+                                      width: 30,
+                                      height: 20,
+                                      child: Text(
+                                          'R\$${controller.cartProducts[index].price}'),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -153,23 +155,23 @@ class CartView extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const CustomText(
-                                text: 'Total',
-                                fontSize: 12,
-                                color: Colors.grey,
+                                text: 'total',
+                                fontSize: 14,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
                               ),
                               CustomText(
-                                text: '\$${controller.totalPrice.toString()}',
+                                text: 'R\$${controller.totalPrice.toString()}',
                                 fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: primaryColor,
+                                color: warningColor,
                               ),
                             ],
                           ),
                           SizedBox(
                             height: 50,
                             width: 146,
-                            child: CustomButton(
-                              'Checkout',
+                            child: CustomButtonCheckout(
+                              'checkout',
                               () {
                                 Get.to(() => CheckoutView());
                               },
