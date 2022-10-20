@@ -7,6 +7,7 @@ import '../domain/viewmodel/control_viewmodel.dart';
 import '../domain/network_viewmodel.dart';
 import '../view/auth/login_view.dart';
 import '../view/widgets/custom_text.dart';
+import 'package:unicons/unicons.dart';
 
 class ControlView extends StatelessWidget {
   const ControlView({Key? key}) : super(key: key);
@@ -50,19 +51,21 @@ class CustomBottomNavigationBar extends StatelessWidget {
           items: const [
             BottomNavigationBarItem(
               label: '',
-              icon: Icon(Icons.explore, size: 40),
-              activeIcon: Icon(Icons.explore, size: 40, color: primaryColor),
-            ),
-            BottomNavigationBarItem(
-              label: '',
-              icon: Icon(Icons.shopping_cart, size: 40),
+              icon: Icon(UniconsLine.compass, size: 35, color: darkGreenColor),
               activeIcon:
-                  Icon(Icons.shopping_cart, size: 40, color: primaryColor),
+                  Icon(UniconsLine.compass, size: 35, color: primaryColor),
             ),
             BottomNavigationBarItem(
               label: '',
-              icon: Icon(Icons.person, size: 40),
-              activeIcon: Icon(Icons.person, size: 40, color: primaryColor),
+              icon: Icon(UniconsLine.shopping_cart,
+                  size: 35, color: darkGreenColor),
+              activeIcon: Icon(UniconsLine.shopping_cart,
+                  size: 35, color: primaryColor),
+            ),
+            BottomNavigationBarItem(
+              label: '',
+              icon: Icon(UniconsLine.user, size: 35, color: darkGreenColor),
+              activeIcon: Icon(UniconsLine.user, size: 35, color: primaryColor),
             ),
           ],
         ),
