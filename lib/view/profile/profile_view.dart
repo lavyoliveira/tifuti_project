@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:unicons/unicons.dart';
 
 import '../../../domain/viewmodel/auth_viewmodel.dart';
 import '../../../domain/viewmodel/profile_viewmodel.dart';
@@ -21,14 +22,14 @@ class ProfileView extends StatelessWidget {
               )
             : SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 58, right: 16, left: 16),
+                  padding: const EdgeInsets.only(top: 100, right: 20, left: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Row(
                         children: [
                           CircleAvatar(
-                            radius: 60,
+                            radius: 50,
                             backgroundImage: const AssetImage(
                                 'assets/images/profile_pic.png'),
                             foregroundImage:
@@ -44,14 +45,15 @@ class ProfileView extends StatelessWidget {
                               children: [
                                 CustomText(
                                   text: controller.currentUser!.name,
-                                  fontSize: 26,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
                                 ),
                                 const SizedBox(
                                   height: 6,
                                 ),
                                 CustomText(
                                   text: controller.currentUser!.email,
-                                  fontSize: 14,
+                                  fontSize: 10,
                                 ),
                               ],
                             ),
@@ -59,25 +61,25 @@ class ProfileView extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(
-                        height: 10,
+                        height: 30,
                       ),
                       CustomListTile(
-                        icon: Icons.edit,
-                        title: 'Editar perfil',
+                        icon: UniconsLine.edit,
+                        title: 'editar perfil',
                         onTapFn: () {
                           Get.to(() => const EditProfileView());
                         },
                       ),
                       CustomListTile(
-                        icon: Icons.history,
-                        title: 'Histórico de compras',
+                        icon: UniconsLine.history_alt,
+                        title: 'histórico de compras',
                         onTapFn: () {
                           Get.to(() => const OrderHistoryView());
                         },
                       ),
                       CustomListTile(
-                        icon: Icons.logout,
-                        title: 'Sair',
+                        icon: UniconsLine.signout,
+                        title: 'sair',
                         onTapFn: () {
                           Get.find<AuthViewModel>().signOut();
                         },
@@ -112,7 +114,7 @@ class CustomListTile extends StatelessWidget {
           leading: Icon(icon),
           title: CustomText(
             text: title,
-            fontSize: 18,
+            fontSize: 16,
           ),
           trailing: title == 'Log Out'
               ? null
@@ -122,7 +124,7 @@ class CustomListTile extends StatelessWidget {
                 ),
         ),
         const SizedBox(
-          height: 20,
+          height: 10,
         ),
       ],
     );
