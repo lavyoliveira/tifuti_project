@@ -2,16 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../domain/viewmodel/cart_viewmodel.dart';
+import '../../model/cart_model.dart';
 import '../../model/product_model.dart';
 import '../product/product_detail_view.dart';
+import '../widgets/custom_button.dart';
 import '../widgets/custom_text.dart';
 import '../../config/theme.dart';
 
 class CategoryProductsView extends StatelessWidget {
   final String categoryName;
   final List<ProductModel> products;
+  final cartController = Get.find<CartViewModel>();
 
-  const CategoryProductsView(
+  CategoryProductsView(
       {Key? key, required this.categoryName, required this.products})
       : super(key: key);
 
@@ -21,7 +25,7 @@ class CategoryProductsView extends StatelessWidget {
       body: Column(
         children: [
           SizedBox(
-            height: 130,
+            height: 100,
             child: Padding(
               padding: const EdgeInsets.only(bottom: 24, left: 16, right: 16),
               child: Row(
@@ -43,6 +47,7 @@ class CategoryProductsView extends StatelessWidget {
                     text: categoryName,
                     fontSize: 20,
                     alignment: Alignment.bottomCenter,
+                    fontWeight: FontWeight.bold,
                   ),
                   Container(
                     width: 24,
@@ -52,57 +57,100 @@ class CategoryProductsView extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(right: 16, left: 16, bottom: 24),
-              child: GridView.builder(
-                padding: const EdgeInsets.all(0),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 16,
-                  crossAxisSpacing: 15,
-                  mainAxisExtent: 320,
-                ),
-                itemCount: products.length,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      Get.to(
-                        () => ProductDetailView(products[index]),
-                      );
-                    },
-                    child: SizedBox(
-                      width: 164,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4.r),
+            child: GridView.builder(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 16,
+                crossAxisSpacing: 15,
+              ),
+              itemCount: products.length,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  child: Stack(
+                    alignment: Alignment.topCenter,
+                    children: <Widget>[
+                      ClipRRect(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10.0)),
+                        child: Container(
+                          padding: const EdgeInsets.only(
+                            top: 50,
+                          ),
+                          child: Container(color: primaryColor),
+                        ),
+                      ),
+                      ClipRRect(
+                        // borderRadius: new BorderRadius.circular(40.0),
+                        child: Image.network(products[index].image,
+                            height: 120, width: 100),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Container(
+                          padding: const EdgeInsets.only(top: 50, left: 10),
+                          child: Text(
+                            products[index].name,
+                            style: const TextStyle(
+                              fontSize: 16,
                               color: Colors.white,
                             ),
-                            height: 240,
-                            width: 164,
-                            child: Image.network(
-                              products[index].image,
-                              fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Container(
+                          padding: const EdgeInsets.only(bottom: 10, left: 10),
+                          child: const Text(
+                            'preço',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.white,
                             ),
                           ),
-                          CustomText(
-                            text: products[index].name,
-                            fontSize: 16,
-                          ),
-                          CustomText(
-                            text: '\$${products[index].price}',
-                            fontSize: 16,
-                            color: primaryColor,
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
-                  );
-                },
-              ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          padding: const EdgeInsets.only(
+                            bottom: 7,
+                            right: 10,
+                          ),
+                          child: Text(
+                            'R\$${products[index].price}',
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Container(
+                          padding: const EdgeInsets.only(right: 10, bottom: 10),
+                          width: 50,
+                          child: CustomButtonCart(
+                            '+',
+                            () {
+                              cartController.addProduct(
+                                CartModel(
+                                  name: products[index].name,
+                                  image: products[index].image,
+                                  price: products[index].price,
+                                  productId: products[index].productId,
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
           ),
         ],

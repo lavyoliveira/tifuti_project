@@ -78,3 +78,5 @@ flutter:
     - family: Montserrat
       fonts:
         - asset: assets/fonts/montserrat.ttf
+        - asset: assets/fonts/Montserrat-semibold.ttf
+          weight: 700

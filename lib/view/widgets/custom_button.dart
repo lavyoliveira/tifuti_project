@@ -71,3 +71,36 @@ class CustomButtonWhite extends StatelessWidget {
     );
   }
 }
+
+class CustomButtonCart extends StatelessWidget {
+  final String text;
+  final VoidCallback? onPressedFn;
+
+  const CustomButtonCart(this.text, this.onPressedFn, {Key? key})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 70,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: darkGreenDiffColor,
+          elevation: 0,
+          padding: const EdgeInsets.symmetric(
+            vertical: 16,
+          ),
+          shape: const StadiumBorder(),
+        ),
+        onPressed: onPressedFn,
+        child: CustomText(
+          text: text,
+          fontSize: 14,
+          color: Colors.white,
+          alignment: Alignment.center,
+          fontWeight: FontWeight.w700,
+        ),
+      ),
+    );
+  }
+}

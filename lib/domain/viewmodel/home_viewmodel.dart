@@ -10,7 +10,6 @@ class HomeViewModel extends GetxController {
   final List<ProductModel> _products = [];
 
   List<CategoryModel> get categories => _categories;
-
   List<ProductModel> get products => _products;
 
   bool _loading = false;

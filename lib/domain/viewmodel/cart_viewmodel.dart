@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tifuti_project/config/theme.dart';
 
 import '../services/local_database_cart.dart';
 import '../../model/cart_model.dart';
@@ -33,6 +35,13 @@ class CartViewModel extends GetxController {
     }
     if (!isExist) {
       await LocalDatabaseCart.db.insertProduct(cartModel);
+      Get.snackbar(
+        'Sucesso',
+        'Produto adicionado ao carrinho',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: primaryColor,
+        colorText: Colors.white,
+      );
       getCartProducts();
     }
   }

@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../domain/viewmodel/home_viewmodel.dart';
 import '../../model/product_model.dart';
-import '../product/product_detail_view.dart';
 import '../widgets/custom_text.dart';
 import '../../config/theme.dart';
 
@@ -113,11 +112,6 @@ class SearchViewState extends State<SearchView> {
                   itemCount: searchProducts.length,
                   itemBuilder: (context, index) {
                     return GestureDetector(
-                      onTap: () {
-                        Get.to(
-                          () => ProductDetailView(searchProducts[index]),
-                        );
-                      },
                       child: SizedBox(
                         width: 164,
                         child: Column(

@@ -2,21 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../domain/viewmodel/cart_viewmodel.dart';
 import '../../domain/viewmodel/checkout_viewmodel.dart';
 import '../../domain/viewmodel/home_viewmodel.dart';
+import '../../model/cart_model.dart';
 import '../../model/product_model.dart';
 import '../category/category_products_view.dart';
-import '../product/product_detail_view.dart';
 import '../search/search_view.dart';
+import '../widgets/custom_button.dart';
 import '../widgets/custom_text.dart';
 import '../../config/theme.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Get.put(CheckoutViewModel());
+    Get.put(CartViewModel());
+    Get.put(HomeViewModel());
 
     return Scaffold(
       body: GetBuilder<HomeViewModel>(
@@ -25,78 +31,88 @@ class HomeView extends StatelessWidget {
             ? const Center(
                 child: CircularProgressIndicator(),
               )
-            : SingleChildScrollView(
-                padding:
-                    EdgeInsets.only(top: 65, bottom: 14, right: 16, left: 16),
-                child: Column(
-                  children: [
-                    ListTile(
-                      leading: const Icon(
-                        Icons.search,
-                        color: primaryColor,
-                        size: 30,
-                      ),
-                      title: TextFormField(
-                        decoration: const InputDecoration(
-                          hintText: 'buscar',
-                          hintStyle: TextStyle(
-                            color: primaryColor,
-                            fontSize: 20,
-                          ),
-                          border: InputBorder.none,
-                        ),
-                        onFieldSubmitted: (value) {
-                          Get.to(() => SearchView(value));
-                        },
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 44,
-                    ),
-                    const CustomText(
-                      text: 'categorias',
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    const SizedBox(
-                      height: 19,
-                    ),
-                    const ListViewCategories(),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            : ListView.separated(
+                itemCount: controller.products.length,
+                itemBuilder: (context, index) {
+                  return SingleChildScrollView(
+                    padding: const EdgeInsets.only(
+                        top: 30, bottom: 30, right: 16, left: 16),
+                    child: Column(
                       children: [
+                        ListTile(
+                          leading: const Icon(
+                            Icons.search,
+                            color: primaryColor,
+                            size: 30,
+                          ),
+                          title: TextFormField(
+                            decoration: const InputDecoration(
+                              hintText: 'buscar',
+                              hintStyle: TextStyle(
+                                color: primaryColor,
+                                fontSize: 20,
+                              ),
+                              border: InputBorder.none,
+                            ),
+                            onFieldSubmitted: (value) {
+                              Get.to(() => SearchView(value));
+                            },
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 44,
+                        ),
                         const CustomText(
-                          text: 'produtos',
+                          text: 'categorias',
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Get.to(() => CategoryProductsView(
-                                  categoryName: 'Produtos',
-                                  products: controller.products,
-                                ));
-                          },
-                          child: const Text(
-                            'ver todos',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: warningColor,
-                              decoration: TextDecoration.underline,
-                            ),
-                          ),
+                        const SizedBox(
+                          height: 19,
                         ),
+                        const ListViewCategories(),
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const CustomText(
+                              text: 'produtos',
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Get.to(() => CategoryProductsView(
+                                      categoryName: 'Produtos',
+                                      products: controller.products,
+                                    ));
+                              },
+                              child: const Text(
+                                'ver todos',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: warningColor,
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 40,
+                        ),
+                        ListViewProducts(),
                       ],
                     ),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    ListViewProducts(),
-                  ],
-                ),
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return const SizedBox(
+                    width: 40,
+                  );
+                },
               ),
       ),
     );
@@ -171,7 +187,9 @@ class ListViewCategories extends StatelessWidget {
 }
 
 class ListViewProducts extends StatelessWidget {
-  const ListViewProducts({Key? key}) : super(key: key);
+  ListViewProducts({Key? key}) : super(key: key);
+
+  final cartController = Get.find<CartViewModel>();
 
   @override
   Widget build(BuildContext context) {
@@ -179,7 +197,7 @@ class ListViewProducts extends StatelessWidget {
       builder: (controller) => SizedBox(
         height: 320.h,
         child: GridView.builder(
-          padding: const EdgeInsets.all(0),
+          // padding: const EdgeInsets.only(bottom: 100),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 16,
@@ -188,18 +206,15 @@ class ListViewProducts extends StatelessWidget {
           itemCount: controller.products.length,
           itemBuilder: (context, index) {
             return GestureDetector(
-              onTap: () {
-                Get.to(
-                  () => ProductDetailView(controller.products[index]),
-                );
-              },
               child: Stack(
                 alignment: Alignment.topCenter,
                 children: <Widget>[
                   ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(10.0)),
                     child: Container(
-                      padding: EdgeInsets.only(top: 50),
+                      padding: const EdgeInsets.only(
+                        top: 50,
+                      ),
                       child: Container(color: primaryColor),
                     ),
                   ),
@@ -214,7 +229,7 @@ class ListViewProducts extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 50, left: 10),
                       child: Text(
                         controller.products[index].name,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16,
                           color: Colors.white,
                         ),
@@ -235,18 +250,38 @@ class ListViewProducts extends StatelessWidget {
                     ),
                   ),
                   Align(
-                    alignment: Alignment.bottomRight,
+                    alignment: Alignment.bottomCenter,
                     child: Container(
                       padding: const EdgeInsets.only(
-                        bottom: 10,
+                        bottom: 7,
                         right: 10,
                       ),
                       child: Text(
-                        '\$${controller.products[index].price}',
+                        'R\$${controller.products[index].price}',
                         style: const TextStyle(
                           fontSize: 16,
                           color: Colors.white,
                         ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: Container(
+                      padding: const EdgeInsets.only(right: 10, bottom: 10),
+                      width: 50,
+                      child: CustomButtonCart(
+                        '+',
+                        () {
+                          cartController.addProduct(
+                            CartModel(
+                              name: controller.products[index].name,
+                              image: controller.products[index].image,
+                              price: controller.products[index].price,
+                              productId: controller.products[index].productId,
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ),

@@ -6,7 +6,7 @@ import '../../view/cart/cart_view.dart';
 import '../../view/home/home_view.dart';
 
 class ControlViewModel extends GetxController {
-  Widget _currentScreen = const HomeView();
+  Widget _currentScreen = HomeView();
   int _navigatorIndex = 0;
 
   Widget get currentScreen => _currentScreen;
@@ -17,7 +17,7 @@ class ControlViewModel extends GetxController {
     _navigatorIndex = index;
     switch (index) {
       case 0:
-        _currentScreen = const HomeView();
+        _currentScreen = HomeView();
         break;
       case 1:
         _currentScreen = const CartView();
