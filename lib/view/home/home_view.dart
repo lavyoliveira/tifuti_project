@@ -33,7 +33,7 @@ class HomeView extends StatelessWidget {
                   )
                 : SingleChildScrollView(
                     padding: const EdgeInsets.only(
-                        top: 30, bottom: 10, right: 16, left: 16),
+                        top: 40, bottom: 10, right: 16, left: 16),
                     child: Column(
                       children: [
                         ListTile(
