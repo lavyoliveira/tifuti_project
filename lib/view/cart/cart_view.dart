@@ -50,14 +50,14 @@ class CartView extends StatelessWidget {
                               }
                             },
                             child: Container(
-                              margin:
-                                  const EdgeInsets.only(left: 20, right: 10),
+                              margin: const EdgeInsets.only(
+                                  left: 20, right: 10, bottom: 20),
                               child: Row(
                                 children: [
                                   Image.network(
                                     controller.cartProducts[index].image,
-                                    height: 100,
-                                    width: 100,
+                                    height: 90,
+                                    width: 90,
                                     fit: BoxFit.cover,
                                   ),
                                   const SizedBox(
