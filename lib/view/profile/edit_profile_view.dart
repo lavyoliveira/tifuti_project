@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tifuti_project/config/theme.dart';
+import 'package:unicons/unicons.dart';
 
 import '../../domain/viewmodel/selectImage_viewmodel.dart';
 import '../../domain/viewmodel/profile_viewmodel.dart';
@@ -43,9 +45,10 @@ class EditProfileViewState extends State<EditProfileView> {
                     ),
                   ),
                   const CustomText(
-                    text: 'Editar perfil',
+                    text: 'editar perfil',
                     fontSize: 20,
                     alignment: Alignment.bottomCenter,
+                    fontWeight: FontWeight.bold,
                   ),
                   Container(
                     width: 24,
@@ -80,71 +83,101 @@ class EditProfileViewState extends State<EditProfileView> {
                               const SizedBox(
                                 width: 40,
                               ),
-                              ElevatedButton(
-                                onPressed: () {
-                                  Get.dialog(
-                                    AlertDialog(
-                                      title: const CustomText(
-                                        text: 'Escolha',
-                                        fontSize: 20,
-                                        color: Colors.blue,
-                                      ),
-                                      content: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          const Divider(
-                                            height: 1,
+                              Expanded(
+                                child: Container(
+                                  width: 205,
+                                  height: 44,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        primary: primaryColor),
+                                    onPressed: () {
+                                      Get.dialog(
+                                        AlertDialog(
+                                          title: const CustomText(
+                                            text: 'escolha',
+                                            fontSize: 20,
+                                            color: primaryColor,
                                           ),
-                                          ListTile(
-                                            onTap: () async {
-                                              try {
-                                                await controller.cameraImage();
-                                                Get.back();
-                                              } catch (error) {
-                                                Get.back();
-                                              }
-                                            },
-                                            title: const CustomText(
-                                              text: 'Câmera',
-                                            ),
-                                            leading: const Icon(
-                                              Icons.camera,
-                                              color: Colors.blue,
-                                            ),
+                                          content: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              const Divider(
+                                                height: 1,
+                                              ),
+                                              ListTile(
+                                                onTap: () async {
+                                                  try {
+                                                    await controller
+                                                        .cameraImage();
+                                                    Get.back();
+                                                  } catch (error) {
+                                                    Get.back();
+                                                  }
+                                                },
+                                                title: const CustomText(
+                                                  text: 'câmera',
+                                                ),
+                                                leading: const Icon(
+                                                  UniconsLine.camera,
+                                                  color: primaryColor,
+                                                ),
+                                              ),
+                                              const Divider(
+                                                height: 1,
+                                              ),
+                                              ListTile(
+                                                onTap: () async {
+                                                  try {
+                                                    await controller
+                                                        .galleryImage();
+                                                    Get.back();
+                                                  } catch (error) {
+                                                    Get.back();
+                                                  }
+                                                },
+                                                title: const CustomText(
+                                                  text: 'galeria',
+                                                ),
+                                                leading: const Icon(
+                                                  UniconsLine.images,
+                                                  color: primaryColor,
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                          const Divider(
-                                            height: 1,
-                                          ),
-                                          ListTile(
-                                            onTap: () async {
-                                              try {
-                                                await controller.galleryImage();
-                                                Get.back();
-                                              } catch (error) {
-                                                Get.back();
-                                              }
-                                            },
-                                            title: const CustomText(
-                                              text: 'Galeria',
-                                            ),
-                                            leading: const Icon(
-                                              Icons.account_box,
-                                              color: Colors.blue,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                        ),
+                                      );
+                                    },
+                                    child: Row(
+                                      children: [
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: const [
+                                            Icon(UniconsLine.image, size: 25)
+                                          ],
+                                        ),
+                                        const SizedBox(width: 5),
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: const [
+                                            Text('trocar imagem',
+                                                style: TextStyle(fontSize: 14)),
+                                          ],
+                                        ),
+                                      ],
                                     ),
-                                  );
-                                },
-                                child: const Icon(Icons.camera),
+                                  ),
+                                ),
                               ),
                             ],
                           ),
                           const SizedBox(
-                            height: 38,
+                            height: 15,
                           ),
                           CustomTextFormField(
+                            icon: UniconsLine.user_square,
                             hintText:
                                 Get.find<ProfileViewModel>().currentUser!.name,
                             initialValue:
@@ -160,11 +193,12 @@ class EditProfileViewState extends State<EditProfileView> {
                             },
                           ),
                           const SizedBox(
-                            height: 38,
+                            height: 15,
                           ),
                           Column(
                             children: [
                               CustomTextFormField(
+                                icon: UniconsLine.envelope,
                                 hintText: Get.find<ProfileViewModel>()
                                     .currentUser!
                                     .email,
@@ -183,10 +217,11 @@ class EditProfileViewState extends State<EditProfileView> {
                                 },
                               ),
                               const SizedBox(
-                                height: 38,
+                                height: 15,
                               ),
                               CustomTextFormField(
-                                hintText: '',
+                                icon: UniconsLine.lock,
+                                hintText: '**************',
                                 obscureText: true,
                                 validatorFn: (value) {
                                   if (value!.isEmpty || value.length < 8) {

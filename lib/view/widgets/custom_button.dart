@@ -21,7 +21,9 @@ class CustomButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(
             vertical: 16,
           ),
-          shape: const StadiumBorder(),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+          ),
         ),
         onPressed: onPressedFn,
         child: CustomText(

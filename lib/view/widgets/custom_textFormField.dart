@@ -33,7 +33,9 @@ class CustomTextFormField extends StatelessWidget {
               color: lightGreenDiffColor,
               fontSize: 13,
             ),
-            icon: Icon(icon, size: 20, color: Colors.white),
+            icon: Icon(icon, size: 20, color: darkGreenColor),
+            focusedBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(color: primaryColor)),
           ),
           keyboardType: keyboardType,
           obscureText: obscureText,
