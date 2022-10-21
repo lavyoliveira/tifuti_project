@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../domain/viewmodel/cart_viewmodel.dart';
 import '../../domain/viewmodel/home_viewmodel.dart';
+import '../../model/cart_model.dart';
 import '../../model/product_model.dart';
+import '../widgets/custom_button.dart';
 import '../widgets/custom_text.dart';
 import '../../config/theme.dart';
 
@@ -16,6 +19,7 @@ class SearchView extends StatefulWidget {
 }
 
 class SearchViewState extends State<SearchView> {
+  final cartController = Get.find<CartViewModel>();
   String? _searchValue;
 
   @override
@@ -70,19 +74,19 @@ class SearchViewState extends State<SearchView> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Container(
-              height: 49,
-              decoration: BoxDecoration(
-                color: Colors.grey.shade200,
-                borderRadius: BorderRadius.circular(45.r),
+            child: ListTile(
+              leading: const Icon(
+                Icons.search,
+                color: primaryColor,
+                size: 25,
               ),
-              child: TextFormField(
+              title: TextFormField(
                 decoration: const InputDecoration(
-                  border: InputBorder.none,
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: Colors.black,
+                  hintStyle: TextStyle(
+                    color: primaryColor,
+                    fontSize: 20,
                   ),
+                  border: InputBorder.none,
                 ),
                 initialValue: _searchValue,
                 onFieldSubmitted: (value) {
@@ -97,55 +101,100 @@ class SearchViewState extends State<SearchView> {
             height: 24,
           ),
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(right: 16, left: 16, bottom: 24),
-              child: GetBuilder<HomeViewModel>(
-                init: Get.find<HomeViewModel>(),
-                builder: (controller) => GridView.builder(
-                  padding: const EdgeInsets.all(0),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 16,
-                    crossAxisSpacing: 15,
-                    mainAxisExtent: 320,
-                  ),
-                  itemCount: searchProducts.length,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      child: SizedBox(
-                        width: 164,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(4.r),
-                                color: Colors.white,
-                              ),
-                              height: 240,
-                              width: 164,
-                              child: Image.network(
-                                searchProducts[index].image,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            CustomText(
-                              text: searchProducts[index].name,
-                              fontSize: 16,
-                            ),
-                            CustomText(
-                              text: '\$${searchProducts[index].price}',
-                              fontSize: 16,
-                              color: primaryColor,
-                            ),
-                          ],
+            child: GridView.builder(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 16,
+                crossAxisSpacing: 15,
+              ),
+              itemCount: searchProducts.length,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  child: Stack(
+                    alignment: Alignment.topCenter,
+                    children: <Widget>[
+                      ClipRRect(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10.0)),
+                        child: Container(
+                          padding: const EdgeInsets.only(
+                            top: 50,
+                          ),
+                          child: Container(color: primaryColor),
                         ),
                       ),
-                    );
-                  },
-                ),
-              ),
+                      ClipRRect(
+                        // borderRadius: new BorderRadius.circular(40.0),
+                        child: Image.network(searchProducts[index].image,
+                            height: 120, width: 100),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Container(
+                          padding: const EdgeInsets.only(top: 50, left: 10),
+                          child: Text(
+                            searchProducts[index].name,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Container(
+                          padding: const EdgeInsets.only(bottom: 10, left: 10),
+                          child: const Text(
+                            'preço',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          padding: const EdgeInsets.only(
+                            bottom: 7,
+                            right: 10,
+                          ),
+                          child: Text(
+                            'R\$${searchProducts[index].price}',
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Container(
+                          padding: const EdgeInsets.only(right: 10, bottom: 10),
+                          width: 50,
+                          child: CustomButtonCart(
+                            '+',
+                            () {
+                              cartController.addProduct(
+                                CartModel(
+                                  name: searchProducts[index].name,
+                                  image: searchProducts[index].image,
+                                  price: searchProducts[index].price,
+                                  productId: searchProducts[index].productId,
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
           ),
         ],
