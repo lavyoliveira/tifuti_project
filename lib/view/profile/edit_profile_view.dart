@@ -74,11 +74,12 @@ class EditProfileViewState extends State<EditProfileView> {
                             children: [
                               CircleAvatar(
                                 radius: 60,
-                                backgroundImage: const AssetImage(
-                                    'assets/images/profile_pic.png'),
+                                backgroundColor: Colors.grey,
                                 foregroundImage: controller.imageFile != null
                                     ? FileImage(controller.imageFile!)
                                     : null,
+                                child: CircleAvatar(
+                                    backgroundColor: Colors.white, radius: 59),
                               ),
                               const SizedBox(
                                 width: 40,
