@@ -109,8 +109,18 @@ class CartView extends StatelessWidget {
                                                   size: 20,
                                                 ),
                                                 onTap: () {
-                                                  controller
-                                                      .decreaseQuantity(index);
+                                                  if (controller
+                                                          .cartProducts[index]
+                                                          .quantity ==
+                                                      1) {
+                                                    controller.removeProduct(
+                                                        controller
+                                                            .cartProducts[index]
+                                                            .productId);
+                                                  } else {
+                                                    controller.decreaseQuantity(
+                                                        index);
+                                                  }
                                                 },
                                               ),
                                             ],
