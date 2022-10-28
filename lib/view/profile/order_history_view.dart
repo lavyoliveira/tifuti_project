@@ -33,9 +33,10 @@ class OrderHistoryView extends StatelessWidget {
                     ),
                   ),
                   const CustomText(
-                    text: 'Histórico de compras',
+                    text: 'histórico de compras',
                     fontSize: 20,
                     alignment: Alignment.bottomCenter,
+                    fontWeight: FontWeight.bold,
                   ),
                   Container(
                     width: 24,
@@ -52,71 +53,48 @@ class OrderHistoryView extends StatelessWidget {
                   return Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                CustomText(
-                                  text: controller.checkouts[index].date,
-                                  color: Colors.grey,
-                                ),
-                                CustomText(
-                                  text: 'Pendente',
-                                  color: Colors.red.shade300,
-                                ),
-                              ],
-                            ),
-                            Divider(
-                              thickness: 1,
-                              color: Colors.grey.shade200,
-                            ),
-                            CustomText(
-                              text: controller.checkouts[index].rua,
-                            ),
-                            CustomText(
-                              text: controller.checkouts[index].cidade,
-                            ),
-                            CustomText(
-                              text: controller.checkouts[index].estado,
-                            ),
-                            CustomText(
-                              text: controller.checkouts[index].pais,
-                            ),
-                            CustomText(
-                              text: controller.checkouts[index].telefone,
-                            ),
-                            Divider(
-                              thickness: 1,
-                              color: Colors.grey.shade200,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const CustomText(
-                                  text: 'Total faturado',
-                                  color: primaryColor,
-                                ),
-                                CustomText(
-                                  text:
-                                      '\$${controller.checkouts[index].totalPrice}',
-                                  color: primaryColor,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('Pedido feito em: '),
+                              CustomText(
+                                text: controller.checkouts[index].date,
+                                color: Colors.grey,
+                                fontSize: 14,
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 6),
+                          CustomTextProducts(
+                            text: 'produtos: ',
+                          ),
+                          CustomText(
+                            text: controller.checkouts[index].estado,
+                          ),
+                          SizedBox(height: 18),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text('pendente',
+                                  style: TextStyle(color: Colors.red)),
+                              CustomText(
+                                text:
+                                    'total: R\$${controller.checkouts[index].totalPrice}',
+                                color: primaryColor,
+                                fontSize: 14,
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   );
                 },
-                separatorBuilder: (context, index) => Divider(
-                  thickness: 1,
-                  color: Colors.grey.shade200,
-                ),
+                separatorBuilder: (context, index) => SizedBox(height: 20),
                 itemCount: controller.checkouts.length,
               ),
             ),

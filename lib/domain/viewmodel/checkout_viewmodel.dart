@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:tifuti_project/model/product_model.dart';
 
 import '../services/firestore_checkout.dart';
 import '../viewmodel/cart_viewmodel.dart';
@@ -44,7 +45,7 @@ class CheckoutViewModel extends GetxController {
       pais: pais!,
       telefone: telefone!,
       totalPrice: Get.find<CartViewModel>().totalPrice.toString(),
-      date: DateFormat.yMMMd().add_jm().format(DateTime.now()),
+      date: DateFormat('dd-MM-yyyy').format(DateTime.now()),
     ));
     Get.find<CartViewModel>().removeAllProducts();
     Get.back();

@@ -39,9 +39,10 @@ class CheckoutView extends StatelessWidget {
                     ),
                   ),
                   const CustomText(
-                    text: 'Checkout',
+                    text: 'checkout',
                     fontSize: 20,
                     alignment: Alignment.bottomCenter,
+                    fontWeight: FontWeight.bold,
                   ),
                   Container(
                     width: 24,

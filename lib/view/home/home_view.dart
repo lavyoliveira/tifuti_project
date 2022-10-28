@@ -97,9 +97,6 @@ class HomeView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        const SizedBox(
-                          height: 20,
-                        ),
                         ListViewProducts(),
                       ],
                     ),
@@ -188,7 +185,7 @@ class ListViewProducts extends StatelessWidget {
           // padding: const EdgeInsets.only(bottom: 100),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            mainAxisSpacing: 16,
+            mainAxisSpacing: 15,
             crossAxisSpacing: 15,
           ),
           itemCount: 4,
