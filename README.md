@@ -5,6 +5,12 @@
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
 > Aplicativo desenvolvido em Flutter para um e-commerce hortifruti que possibilita o comprador a entrar com login social e a selecionar sua localização.
+
+## 😎 Prints das telas
+
+<img src="https://user-images.githubusercontent.com/94937715/198364183-e801e1e7-e95b-4b99-90f9-4eb075598d86.png" width="300"/> <img src="https://user-images.githubusercontent.com/94937715/198362480-022b1dd4-7f15-4133-90cd-ad1942b3dd00.png" width="300"/> <img src="https://user-images.githubusercontent.com/94937715/198362752-51a0b3b0-597d-4755-94c6-ec6f98f38693.png" width="300"/> <img src="https://user-images.githubusercontent.com/94937715/198363053-51b86228-81fc-4fcf-b072-7917da8cf8a1.png" width="300"/> <img src="https://user-images.githubusercontent.com/94937715/198363230-489c8d7c-3264-44dc-ab78-5c80ac2cd8b7.png" width="300"/> <img src="https://user-images.githubusercontent.com/94937715/198363991-03535720-97f8-49b4-9d05-a12f4a3f8545.png" width="300"/>
+
+
 ### Ajustes e melhorias
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
