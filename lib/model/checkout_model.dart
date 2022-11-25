@@ -1,21 +1,15 @@
 class CheckoutModel {
-  late String rua, cidade, estado, pais, telefone, totalPrice, date;
+  late String location, telefone, totalPrice, date;
 
   CheckoutModel({
-    required this.rua,
-    required this.cidade,
-    required this.estado,
-    required this.pais,
+    required this.location,
     required this.telefone,
     required this.totalPrice,
     required this.date,
   });
 
   CheckoutModel.fromJson(Map<dynamic, dynamic> map) {
-    rua = map['rua'];
-    cidade = map['cidade'];
-    estado = map['estado'];
-    pais = map['pais'];
+    location = map['location'];
     telefone = map['telefone'];
     totalPrice = map['totalPrice'];
     date = map['date'];
@@ -23,10 +17,7 @@ class CheckoutModel {
 
   toJson() {
     return {
-      'rua': rua,
-      'cidade': cidade,
-      'estado': estado,
-      'pais': pais,
+      'location': location,
       'telefone': telefone,
       'totalPrice': totalPrice,
       'date': date,
