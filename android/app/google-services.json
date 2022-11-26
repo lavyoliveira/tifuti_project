@@ -7,18 +7,55 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:532594485260:android:591db1d98e41446729a629",
+        "mobilesdk_app_id": "1:532594485260:android:068238d189d7090029a629",
+        "android_client_info": {
+          "package_name": "com.example.tifuti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "532594485260-vhv2spnqumg78d5h0fssb3t11lbj81gk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tifuti",
+            "certificate_hash": "44876c45b230136a689a59947994ac46a27312f3"
+          }
+        },
+        {
+          "client_id": "532594485260-js6n1694paork74u9d3dlro1tm9ess5d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiCkpF2yRYStrz2-wEp0p8ll0Rn4lnVXE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "532594485260-js6n1694paork74u9d3dlro1tm9ess5d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:532594485260:android:20a402d78ab7124329a629",
         "android_client_info": {
           "package_name": "com.example.tifuti_project"
         }
       },
       "oauth_client": [
         {
-          "client_id": "532594485260-aofct1uloaidc835t8a1pusfsl6uijvu.apps.googleusercontent.com",
+          "client_id": "532594485260-epkeei05r7qkos36eko0uk83kkvdchlf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.tifuti_project",
-            "certificate_hash": "523ec6b6499493173c8bc8a1b18a718236123954"
+            "certificate_hash": "8ed1b70badef4f85eca5f71641799faae9d78114"
           }
         },
         {
