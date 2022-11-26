@@ -72,9 +72,9 @@ class OrderHistoryView extends StatelessWidget {
                           CustomTextProducts(
                             text: 'produtos: ',
                           ),
-                          CustomText(
-                            text: controller.checkouts[index].estado,
-                          ),
+                          // CustomText(
+                          //   text: controller.checkouts[index].estado,
+                          // ),
                           SizedBox(height: 18),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

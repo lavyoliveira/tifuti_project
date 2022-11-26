@@ -163,7 +163,7 @@ packages:
     source: hosted
     version: "1.24.0"
   firebase_core_platform_interface:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: firebase_core_platform_interface
       url: "https://pub.dartlang.org"
@@ -176,6 +176,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.3"
+  firebase_messaging:
+    dependency: "direct main"
+    description:
+      name: firebase_messaging
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "13.1.0"
+  firebase_messaging_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_messaging_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.2.0"
+  firebase_messaging_web:
+    dependency: transitive
+    description:
+      name: firebase_messaging_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.2.0"
   firebase_storage:
     dependency: "direct main"
     description:
@@ -243,7 +264,7 @@ packages:
       name: flutter_screenutil
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.5.4"
+    version: "5.6.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -254,6 +275,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  geocoder:
+    dependency: "direct main"
+    description:
+      name: geocoder
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.1"
   geocoding:
     dependency: "direct main"
     description:
@@ -288,7 +316,7 @@ packages:
       name: geolocator_apple
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.2"
+    version: "2.2.3"
   geolocator_platform_interface:
     dependency: transitive
     description:
@@ -428,7 +456,28 @@ packages:
       name: lints
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.0.1"
+  location:
+    dependency: "direct main"
+    description:
+      name: location
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.4.0"
+  location_platform_interface:
+    dependency: transitive
+    description:
+      name: location_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.3.0"
+  location_web:
+    dependency: transitive
+    description:
+      name: location_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.1.1"
   matcher:
     dependency: transitive
     description:
@@ -470,7 +519,7 @@ packages:
       name: path_provider_android
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.20"
+    version: "2.0.21"
   path_provider_ios:
     dependency: transitive
     description:
@@ -601,7 +650,7 @@ packages:
       name: sqflite_common
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.0"
+    version: "2.4.0"
   stack_trace:
     dependency: transitive
     description:

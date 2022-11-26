@@ -8,3 +8,4 @@ const darkGreenDiffColor = Color.fromARGB(255, 46, 92, 58);
 const lightOrangeColor = Color(0xffFFC15F);
 const lightGreenDiffColor = Color(0xffB9F1B3);
 const warningColor = Color(0xffCC0000);
+const hintColor = Color.fromARGB(255, 165, 196, 171);

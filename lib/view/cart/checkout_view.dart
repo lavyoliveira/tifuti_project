@@ -65,80 +65,111 @@ class CheckoutView extends StatelessWidget {
                         SizedBox(
                           height: 20.h,
                         ),
-                        CustomTextFormField(
-                          hintText: 'Rua de Pedestre E24',
-                          validatorFn: (value) {
-                            if (value!.isEmpty || value.length < 4) {
-                              return 'Por favor, insira um nome válido de rua.';
-                            }
-                            return null;
-                          },
-                          onSavedFn: (value) {
-                            controller.rua = value;
-                          },
-                        ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        CustomTextFormField(
-                          hintText: 'São Paulo',
-                          validatorFn: (value) {
-                            if (value!.isEmpty || value.length < 4) {
-                              return 'Por favor, insira um nome válido de cidade.';
-                            }
-                            return null;
-                          },
-                          onSavedFn: (value) {
-                            controller.cidade = value;
-                          },
-                        ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: CustomTextFormField(
-                                hintText: 'São Paulo',
-                                validatorFn: (value) {
-                                  if (value!.isEmpty || value.length < 4) {
-                                    return 'Por favor, insira um nome válido de estado.';
-                                  }
-                                  return null;
-                                },
-                                onSavedFn: (value) {
-                                  controller.estado = value;
-                                },
+                        // CustomTextFormField(
+                        //   hintText: 'Rua de Pedestre E24',
+                        //   validatorFn: (value) {
+                        //     if (value!.isEmpty || value.length < 4) {
+                        //       return 'Por favor, insira um nome válido de rua.';
+                        //     }
+                        //     return null;
+                        //   },
+                        //   onSavedFn: (value) {
+                        //     controller.rua = value;
+                        //   },
+                        // ),
+                        // SizedBox(
+                        //   height: 20.h,
+                        // ),
+                        // CustomTextFormField(
+                        //   hintText: 'São Paulo',
+                        //   validatorFn: (value) {
+                        //     if (value!.isEmpty || value.length < 4) {
+                        //       return 'Por favor, insira um nome válido de cidade.';
+                        //     }
+                        //     return null;
+                        //   },
+                        //   onSavedFn: (value) {
+                        //     controller.cidade = value;
+                        //   },
+                        // ),
+                        // SizedBox(
+                        //   height: 20.h,
+                        // ),
+                        // Row(
+                        //   children: [
+                        //     Expanded(
+                        //       child: CustomTextFormField(
+                        //         hintText: 'São Paulo',
+                        //         validatorFn: (value) {
+                        //           if (value!.isEmpty || value.length < 4) {
+                        //             return 'Por favor, insira um nome válido de estado.';
+                        //           }
+                        //           return null;
+                        //         },
+                        //         onSavedFn: (value) {
+                        //           controller.estado = value;
+                        //         },
+                        //       ),
+                        //     ),
+                        //     const SizedBox(
+                        //       width: 36,
+                        //     ),
+                        //     Expanded(
+                        //       child: CustomTextFormField(
+                        //         hintText: 'Brasil',
+                        //         validatorFn: (value) {
+                        //           if (value!.isEmpty || value.length < 4) {
+                        //             return 'Por favor, insira um nome válido de país.';
+                        //           }
+                        //           return null;
+                        //         },
+                        //         onSavedFn: (value) {
+                        //           controller.pais = value;
+                        //         },
+                        //       ),
+                        //     ),
+                        //   ],
+                        // ),
+                        ListTile(
+                          title: Container(
+                            width: 250.0,
+                            child: TextFormField(
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 13,
                               ),
-                            ),
-                            const SizedBox(
-                              width: 36,
-                            ),
-                            Expanded(
-                              child: CustomTextFormField(
-                                hintText: 'Brasil',
-                                validatorFn: (value) {
-                                  if (value!.isEmpty || value.length < 4) {
-                                    return 'Por favor, insira um nome válido de país.';
-                                  }
-                                  return null;
-                                },
-                                onSavedFn: (value) {
-                                  controller.pais = value;
-                                },
+                              controller: controller.locationTEC,
+                              decoration: InputDecoration(
+                                hintText: 'Rua Fernandes, 324, Itajubá',
+                                hintStyle: TextStyle(
+                                  color: hintColor,
+                                  fontSize: 13,
+                                ),
                               ),
+                              maxLines: null,
+                              onChanged: (val) => controller.setLocation(val),
                             ),
-                          ],
+                          ),
+                          trailing: IconButton(
+                            tooltip: "Use your current location",
+                            icon: Icon(
+                              Icons.location_on,
+                              size: 25.0,
+                            ),
+                            iconSize: 30.0,
+                            color: Theme.of(context).colorScheme.secondary,
+                            onPressed: () => controller.getLocation(),
+                          ),
                         ),
                         SizedBox(
                           height: 20.h,
                         ),
                         CustomTextFormField(
-                          hintText: '+20123456789',
+                          hintText: 'DDD99999-9999',
                           keyboardType: TextInputType.phone,
                           validatorFn: (value) {
                             if (value!.isEmpty || value.length < 10) {
-                              return 'Please enter valid number.';
+                              return 'Por favor, insira um número válido.';
                             }
                             return null;
                           },
