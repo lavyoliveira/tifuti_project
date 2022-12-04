@@ -5,6 +5,13 @@ import 'package:tifuti_project/config/theme.dart';
 import '../services/local_database_cart.dart';
 import '../../model/cart_model.dart';
 
+class CartNegocio {
+  String productId;
+  int quantity;
+
+  CartNegocio({required this.productId, required this.quantity});
+}
+
 class CartViewModel extends GetxController {
   List<CartModel> _cartProducts = [];
 
@@ -13,6 +20,14 @@ class CartViewModel extends GetxController {
   double _totalPrice = 0;
 
   double get totalPrice => _totalPrice;
+
+  int _totalQuantity = 0;
+
+  int get totalQuantity => _totalQuantity;
+
+  List _names = [];
+
+  List get names => _names;
 
   @override
   void onInit() {
@@ -23,6 +38,7 @@ class CartViewModel extends GetxController {
   getCartProducts() async {
     _cartProducts = await LocalDatabaseCart.db.getAllProducts();
     getTotalPrice();
+    getNames();
     update();
   }
 
@@ -60,6 +76,24 @@ class CartViewModel extends GetxController {
     _totalPrice = 0;
     for (var cartProduct in _cartProducts) {
       _totalPrice += (double.parse(cartProduct.price) * cartProduct.quantity);
+    }
+  }
+
+  getTotalQuantity() {
+    _totalQuantity = 0;
+    for (var cartProduct in _cartProducts) {
+      _totalQuantity += cartProduct.quantity;
+    }
+  }
+
+  getNames() {
+    _names = [];
+    getTotalQuantity();
+    for (var cartProduct in _cartProducts) {
+      _names.add('Id: ' +
+          cartProduct.productId +
+          ' Quantidade: ' +
+          _totalQuantity.toString());
     }
   }
 

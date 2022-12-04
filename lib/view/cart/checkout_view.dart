@@ -8,6 +8,7 @@ import '../widgets/custom_button.dart';
 import '../../config/theme.dart';
 import '../widgets/custom_text.dart';
 import '../widgets/custom_textFormField.dart';
+import 'package:group_button/group_button.dart';
 
 class CheckoutView extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -65,121 +66,65 @@ class CheckoutView extends StatelessWidget {
                         SizedBox(
                           height: 20.h,
                         ),
-                        // CustomTextFormField(
-                        //   hintText: 'Rua de Pedestre E24',
-                        //   validatorFn: (value) {
-                        //     if (value!.isEmpty || value.length < 4) {
-                        //       return 'Por favor, insira um nome válido de rua.';
-                        //     }
-                        //     return null;
-                        //   },
-                        //   onSavedFn: (value) {
-                        //     controller.rua = value;
-                        //   },
-                        // ),
-                        // SizedBox(
-                        //   height: 20.h,
-                        // ),
-                        // CustomTextFormField(
-                        //   hintText: 'São Paulo',
-                        //   validatorFn: (value) {
-                        //     if (value!.isEmpty || value.length < 4) {
-                        //       return 'Por favor, insira um nome válido de cidade.';
-                        //     }
-                        //     return null;
-                        //   },
-                        //   onSavedFn: (value) {
-                        //     controller.cidade = value;
-                        //   },
-                        // ),
-                        // SizedBox(
-                        //   height: 20.h,
-                        // ),
-                        // Row(
-                        //   children: [
-                        //     Expanded(
-                        //       child: CustomTextFormField(
-                        //         hintText: 'São Paulo',
-                        //         validatorFn: (value) {
-                        //           if (value!.isEmpty || value.length < 4) {
-                        //             return 'Por favor, insira um nome válido de estado.';
-                        //           }
-                        //           return null;
-                        //         },
-                        //         onSavedFn: (value) {
-                        //           controller.estado = value;
-                        //         },
-                        //       ),
-                        //     ),
-                        //     const SizedBox(
-                        //       width: 36,
-                        //     ),
-                        //     Expanded(
-                        //       child: CustomTextFormField(
-                        //         hintText: 'Brasil',
-                        //         validatorFn: (value) {
-                        //           if (value!.isEmpty || value.length < 4) {
-                        //             return 'Por favor, insira um nome válido de país.';
-                        //           }
-                        //           return null;
-                        //         },
-                        //         onSavedFn: (value) {
-                        //           controller.pais = value;
-                        //         },
-                        //       ),
-                        //     ),
-                        //   ],
-                        // ),
-                        ListTile(
-                          title: Container(
-                            width: 250.0,
-                            child: TextFormField(
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 13,
-                              ),
-                              controller: controller.locationTEC,
-                              decoration: InputDecoration(
-                                hintText: 'Rua Fernandes, 324, Itajubá',
-                                hintStyle: TextStyle(
-                                  color: hintColor,
-                                  fontSize: 13,
+                        Column(
+                          children: [
+                            SizedBox(
+                              width: 320,
+                              child: ListTile(
+                                title: TextFormField(
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 13,
+                                  ),
+                                  controller: controller.locationTEC,
+                                  decoration: const InputDecoration(
+                                    hintText: 'Rua Fernandes, 324, Itajubá',
+                                    hintStyle: TextStyle(
+                                      color: hintColor,
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                  maxLines: null,
+                                  onChanged: (val) =>
+                                      controller.setLocation(val),
+                                ),
+                                trailing: IconButton(
+                                  tooltip: "Use sua localização atual",
+                                  icon: const Icon(
+                                    Icons.location_on,
+                                    size: 25.0,
+                                    color: primaryColor,
+                                  ),
+                                  iconSize: 30.0,
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
+                                  onPressed: () => controller.getLocation(),
                                 ),
                               ),
-                              maxLines: null,
-                              onChanged: (val) => controller.setLocation(val),
                             ),
-                          ),
-                          trailing: IconButton(
-                            tooltip: "Use your current location",
-                            icon: Icon(
-                              Icons.location_on,
-                              size: 25.0,
+                            Container(
+                              padding: const EdgeInsets.only(right: 50),
+                              child: CustomTextFormField(
+                                hintText: '35987654344',
+                                keyboardType: TextInputType.phone,
+                                validatorFn: (value) {
+                                  if (value!.isEmpty || value.length < 10) {
+                                    return 'Por favor, insira um número válido.';
+                                  }
+                                  return null;
+                                },
+                                onSavedFn: (value) {
+                                  controller.telefone = value;
+                                },
+                              ),
                             ),
-                            iconSize: 30.0,
-                            color: Theme.of(context).colorScheme.secondary,
-                            onPressed: () => controller.getLocation(),
-                          ),
+                          ],
                         ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        CustomTextFormField(
-                          hintText: 'DDD99999-9999',
-                          keyboardType: TextInputType.phone,
-                          validatorFn: (value) {
-                            if (value!.isEmpty || value.length < 10) {
-                              return 'Por favor, insira um número válido.';
-                            }
-                            return null;
-                          },
-                          onSavedFn: (value) {
-                            controller.telefone = value;
-                          },
-                        ),
-                        SizedBox(
-                          height: 38.h,
-                        ),
+                        SizedBox(height: 30),
+                        Text('Tipos de pagamento'),
+                        SizedBox(height: 10),
+                        RadioButtons(),
+                        SizedBox(height: 40),
                         CustomButton(
                           'Finalizar',
                           () async {
@@ -231,6 +176,34 @@ class CheckoutView extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+enum Payment { pix, presencial }
+
+class RadioButtons extends StatelessWidget {
+  RadioButtons({super.key});
+
+  Payment? payment = Payment.pix;
+
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<CheckoutViewModel>(
+      init: Get.find<CheckoutViewModel>(),
+      builder: (controller) => Center(
+          child: GroupButton(
+        options: GroupButtonOptions(
+            selectedColor: primaryColor,
+            borderRadius: BorderRadius.circular(10)),
+        onSelected: (value, index, isSelected) =>
+            controller.setPayment('${value}'),
+        isRadio: true,
+        buttons: [
+          "pix",
+          "pessoalmente",
+        ],
+      )),
     );
   }
 }
@@ -289,20 +262,20 @@ class ListViewProducts extends StatelessWidget {
               },
             ),
           ),
-          SizedBox(
-            height: 12.h,
+          const SizedBox(
+            height: 30,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const CustomText(
-                text: 'Total: ',
+                text: 'total: ',
                 fontSize: 14,
                 color: Colors.grey,
               ),
               CustomText(
-                text: '\$${controller.totalPrice.toString()}',
+                text: 'R\$${controller.totalPrice.toString()}',
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: primaryColor,

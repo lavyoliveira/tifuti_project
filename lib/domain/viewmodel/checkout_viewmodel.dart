@@ -22,8 +22,19 @@ class CheckoutViewModel extends GetxController {
 
   bool get isLoading => _isLoading;
 
-  //controllers
   TextEditingController locationTEC = TextEditingController();
+
+  double _latitude = 0.0;
+
+  double get latitude => _latitude;
+
+  double _longitude = 0.0;
+
+  double get longitude => _longitude;
+
+  String _payment = '';
+
+  String get payment => _payment;
 
   @override
   void onInit() {
@@ -50,6 +61,10 @@ class CheckoutViewModel extends GetxController {
       telefone: telefone!,
       totalPrice: Get.find<CartViewModel>().totalPrice.toString(),
       date: DateFormat('dd-MM-yyyy').format(DateTime.now()),
+      products: Get.find<CartViewModel>().names.toList(),
+      latitude: _latitude,
+      longitude: _longitude,
+      payment: _payment,
     ));
     Get.find<CartViewModel>().removeAllProducts();
     Get.back();
@@ -57,37 +72,37 @@ class CheckoutViewModel extends GetxController {
   }
 
   setLocation(String val) {
-    if (kDebugMode) {
-      print('SetCountry $val');
-    }
     location = val;
+  }
+
+  setPayment(String val) {
+    _payment = val;
+    print(_payment);
   }
 
   getLocation() async {
     var loading = true;
     LocationPermission permission = await Geolocator.checkPermission();
-    if (kDebugMode) {
-      print(permission);
-    }
     if (permission == LocationPermission.denied ||
         permission == LocationPermission.deniedForever) {
       LocationPermission rPermission = await Geolocator.requestPermission();
-      if (kDebugMode) {
-        print(rPermission);
-      }
       await getLocation();
     } else {
       var position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high);
+        desiredAccuracy: LocationAccuracy.high,
+      );
       List<Placemark> placemarks =
           await placemarkFromCoordinates(position.latitude, position.longitude);
-      var placemark = placemarks[0];
+
+      _latitude = position.latitude;
+      print(_latitude);
+      _longitude = position.longitude;
+      print(_longitude);
+
+      Placemark placemark = placemarks[0];
       location =
-          "${placemarks[0].street}, ${placemarks[0].name}, ${placemarks[0].country}, ${placemarks[0].locality}";
+          '${placemark.subThoroughfare}, ${placemark.thoroughfare}, ${placemark.subAdministrativeArea}';
       locationTEC.text = location!;
-      if (kDebugMode) {
-        print(location);
-      }
     }
     loading = false;
   }
