@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../config/theme.dart';
@@ -14,9 +15,9 @@ class OrderHistoryView extends StatelessWidget {
       body: Column(
         children: [
           SizedBox(
-            height: 130,
+            height: 130.h,
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 24, left: 16, right: 16),
+              padding: EdgeInsets.only(bottom: 24.h, left: 16.w, right: 16.w),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -33,10 +34,9 @@ class OrderHistoryView extends StatelessWidget {
                     ),
                   ),
                   const CustomText(
-                    text: 'histórico de compras',
+                    text: 'Histórico de compras',
                     fontSize: 20,
                     alignment: Alignment.bottomCenter,
-                    fontWeight: FontWeight.bold,
                   ),
                   Container(
                     width: 24,
@@ -52,49 +52,60 @@ class OrderHistoryView extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text('Pedido feito em: '),
-                              CustomText(
-                                text: controller.checkouts[index].date,
-                                color: Colors.grey,
-                                fontSize: 14,
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 6),
-                          CustomTextProducts(
-                            text: 'produtos: ',
-                          ),
-                          // CustomText(
-                          //   text: controller.checkouts[index].estado,
-                          // ),
-                          SizedBox(height: 18),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text('pendente',
-                                  style: TextStyle(color: Colors.red)),
-                              CustomText(
-                                text:
-                                    'total: R\$${controller.checkouts[index].totalPrice}',
-                                color: primaryColor,
-                                fontSize: 14,
-                              ),
-                            ],
-                          ),
-                        ],
+                        EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
+                    child: Card(
+                      child: Padding(
+                        padding: EdgeInsets.all(16.h),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                CustomText(
+                                  text: controller.checkouts[index].date,
+                                  color: Colors.grey,
+                                ),
+                                CustomText(
+                                  text: 'Pendente',
+                                  color: Colors.red.shade300,
+                                ),
+                              ],
+                            ),
+                            Divider(
+                              thickness: 1,
+                              color: Colors.grey.shade200,
+                            ),
+                            CustomText(
+                              text: controller.checkouts[index].telefone,
+                            ),
+                            Divider(
+                              thickness: 1,
+                              color: Colors.grey.shade200,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const CustomText(
+                                  text: 'Total faturado',
+                                  color: primaryColor,
+                                ),
+                                CustomText(
+                                  text:
+                                      '\$${controller.checkouts[index].totalPrice}',
+                                  color: primaryColor,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   );
                 },
-                separatorBuilder: (context, index) => SizedBox(height: 20),
+                separatorBuilder: (context, index) => Divider(
+                  thickness: 1,
+                  color: Colors.grey.shade200,
+                ),
                 itemCount: controller.checkouts.length,
               ),
             ),

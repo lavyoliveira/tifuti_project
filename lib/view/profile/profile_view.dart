@@ -70,13 +70,13 @@ class ProfileView extends StatelessWidget {
                           Get.to(() => const EditProfileView());
                         },
                       ),
-                      CustomListTile(
-                        icon: UniconsLine.history_alt,
-                        title: 'histórico de compras',
-                        onTapFn: () {
-                          Get.to(() => const OrderHistoryView());
-                        },
-                      ),
+                      // CustomListTile(
+                      //   icon: UniconsLine.history_alt,
+                      //   title: 'histórico de compras',
+                      //   onTapFn: () {
+                      //     Get.to(() => const OrderHistoryView());
+                      //   },
+                      // ),
                       CustomListTile(
                         icon: UniconsLine.signout,
                         title: 'sair',
