@@ -23,9 +23,9 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Perfil do comprador para edição de informações
 - [x] Categorias
 - [x] Produtos
-- [ ] Integração com localização Maps
-- [ ] Reformulação do UI/UX
-- [ ] "Super" para adição de produtos
+- [x] Integração com localização Maps
+- [x] Reformulação do UI/UX
+- [x] "Super" para adição de produtos
 
 ## 💻 Pré-requisitos
 
